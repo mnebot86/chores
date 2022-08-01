@@ -1,0 +1,30 @@
+{
+	"name": "chores",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"@react-native-community/picker": "^1.8.1",
+		"bcryptjs": "^2.4.3",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
+		"express-async-errors": "^3.1.1",
+		"express-rate-limit": "^6.3.0",
+		"helmet": "^5.0.2",
+		"http-status-codes": "^2.2.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.3.1",
+		"rate-limiter": "^0.2.0",
+		"react-native-safe-area-context": "^4.3.1",
+		"react-native-screens": "^3.13.1",
+		"validator": "^13.7.0",
+		"xss-clean": "^0.1.1"
+	},
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}
