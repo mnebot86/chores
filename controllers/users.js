@@ -4,6 +4,7 @@ const { BadRequestErrors, UnauthenticatedError } = require('../errors');
 
 const register = async (req, res) => {
 	const { firstName, lastName, email, password, role } = req.body;
+
 	const userExists = await User.findOne({ email });
 
 	if (!firstName || !lastName || !email || !password || !role) {
@@ -13,18 +14,23 @@ const register = async (req, res) => {
 	if (userExists) {
 		throw new BadRequestErrors('Email already in use');
 	}
+
 	const user = await User.create({ ...req.body });
 	const token = user.createJWT();
 
-	//TODO: Can still see password when created
 	res.status(StatusCodes.CREATED).json({
-		data: { firstName, lastName, email },
+		chores: user.chores,
+		email: user.email,
+		firstName: user.firstName,
+		lastName: user.lastName,
+		id: user._id,
 		token,
 	});
 };
 
 const logIn = async (req, res) => {
 	const { email, password } = req.body;
+
 	if (!email || !password) {
 		throw new BadRequestErrors('Please provide email and password');
 	}
@@ -41,8 +47,8 @@ const logIn = async (req, res) => {
 	}
 
 	const token = user.createJWT();
+
 	res.status(StatusCodes.OK).json({
-		user: { firstName: user.firstName, id: user._id },
 		token,
 	});
 };

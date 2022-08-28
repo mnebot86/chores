@@ -64,6 +64,8 @@ UserSchema.methods.createJWT = function () {
 			lastName: this.lastName,
 			email: this.email,
 			role: this.role,
+			family: this.family,
+			chores: this.chores,
 		},
 		process.env.JWT_SECRET,
 		{
